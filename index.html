@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7fc">
+  <meta name="description" content="Читай-ка — спокойный тренажёр чтения вслух для 2, 3 и 4 классов. Без видимого секундомера, с вопросами и личным прогрессом.">
+  <title>Читай-ка — тренажёр чтения для 2–4 классов</title>
+  <style>
+:root{--ink:#253049;--muted:#78839b;--line:#e7e9f2;--violet:#7157c9;--violet-dark:#5a42b1;--blue:#4b73dd;--teal:#0e8f86;--coral:#f27777;--pink:#feeaf0;--paper:#fff;--bg:#f7f8fd;--shadow:0 16px 44px rgba(40,43,90,.07);--r:25px;--font-reading:25px;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:auto} body{margin:0;min-height:100vh;background:var(--bg);font-family:ui-rounded,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+button,input{font:inherit} button{cursor:pointer} button:disabled{cursor:not-allowed;opacity:.55} button:focus-visible,input:focus-visible{outline:3px solid #ffb64e;outline-offset:4px} svg{display:block;width:100%;height:100%} a{color:var(--violet-dark)}
+.site-shell{min-height:100vh;display:flex;flex-direction:column}.site-header{height:100px;background:rgba(255,255,255,.88);border-bottom:1px solid #eeeff5}.header-inner,.footer-inner{width:min(1140px,calc(100% - 56px));height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:25px}.brand-button{display:flex;align-items:center;gap:12px;background:transparent;border:0;text-align:left;padding:0;color:var(--ink)}.brand-mark{width:51px;height:51px;border-radius:17px;background:#7f62d5;display:grid;place-items:center;padding:9px;box-shadow:0 7px 17px #7f62d533}.brand-title{font-size:25px;font-weight:850;line-height:1;letter-spacing:-1.1px}.brand-title>span{color:var(--violet)}.brand-title small{display:block;margin-top:8px;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:750;color:var(--muted)}.top-nav{display:flex;align-items:center;gap:11px}.nav-link{border:0;background:transparent;color:#64708b;padding:12px 16px;border-radius:13px;font-weight:750;font-size:14px}.nav-link:hover,.nav-link.active{background:#f1effc;color:var(--violet-dark)}.nav-link-parent{border:1px solid #e5e3f0;background:white;color:#68718a;padding:12px 17px}.main-content{flex:1;width:min(1140px,calc(100% - 56px));margin:0 auto;padding:43px 0 62px}.site-footer{border-top:1px solid var(--line);background:white;min-height:73px;color:#9aa1b2;font-size:12px}.footer-inner{padding-block:18px}.footer-inner span:first-child span{color:#f29b9a}.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--violet-dark);font-size:12px;font-weight:850;letter-spacing:1.25px;text-transform:uppercase}.eyebrow .twinkle{font-size:18px;color:#f2a65a}.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.32fr .84fr;gap:25px;min-height:345px;background:#edeafa;border-radius:32px;padding:55px 59px;margin-bottom:48px}.hero:before{content:"";position:absolute;width:310px;height:310px;border-radius:50%;background:#dcd6f6;right:-40px;top:-65px}.hero-copy{position:relative;z-index:1}.hero h1{font-weight:850;letter-spacing:-2.7px;line-height:1.12;font-size:clamp(35px,4.4vw,52px);max-width:620px;margin:18px 0}.hero h1 em{font-style:normal;color:var(--violet)}.hero p{font-size:16px;line-height:1.8;color:#69738d;max-width:530px;margin:0}.hero-pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:26px}.hero-pill{background:#fff9;border:1px solid #fff;border-radius:100px;padding:9px 12px;font-size:12px;font-weight:760;color:#5a5c80}.hero-art{position:relative;align-self:center;justify-self:center;width:min(320px,100%);aspect-ratio:1/1}.art-blob{position:absolute;inset:9% 2% 2%;background:#d9d2f7;border-radius:43% 57% 53% 47% / 50% 46% 54% 50%;transform:rotate(-14deg)}.art-book{position:absolute;left:13%;top:25%;width:78%;height:60%;background:#fff;border-radius:18px 18px 26px 26px;transform:rotate(-10deg);box-shadow:0 13px 0 #c5b7ec,0 26px 35px #6754a32b;border:9px solid #fff}.art-book:before{content:"";position:absolute;left:49%;top:0;bottom:0;width:4px;background:#e8ddfb}.art-page-left,.art-page-right{position:absolute;top:15%;width:28%;height:47%;border-radius:5px;background:repeating-linear-gradient(to bottom,#e3e0f4 0,#e3e0f4 4px,transparent 4px,transparent 16px)}.art-page-left{left:12%}.art-page-right{right:10%}.art-face{position:absolute;top:49%;left:32%;display:flex;gap:32px;font-size:30px;line-height:1;color:#5945a5}.art-blush{position:absolute;left:42%;top:66%;width:25px;height:8px;border-bottom:3px solid #e89aa5;border-radius:50%}.art-star{position:absolute;z-index:2;font-size:34px;color:#f7b750}.art-star.s1{left:0;top:14%}.art-star.s2{right:1%;top:15%;font-size:22px}.art-star.s3{right:2%;bottom:10%;color:#aa95e2}.art-cloud{position:absolute;left:-13%;bottom:3%;width:105px;height:41px;background:#fff9;border-radius:30px;transform:rotate(15deg)}
+.section-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:0 0 20px}.section-heading h2,.page-title{margin:0;font-size:clamp(25px,3.3vw,36px);line-height:1.22;letter-spacing:-1.15px}.section-heading p{font-size:14px;color:var(--muted);margin:8px 0 0}.soft-note{display:flex;align-items:center;gap:10px;color:#78819b;font-size:13px}.soft-note .dot{width:8px;height:8px;border-radius:50%;background:#8bcaac}
+.grade-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.grade-card{position:relative;text-align:left;border:1px solid #ecebf5;background:white;border-radius:27px;min-height:235px;padding:25px 25px 23px;overflow:hidden;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}.grade-card:hover,.story-card:hover{transform:translateY(-4px);box-shadow:0 18px 32px #484e821c}.grade-card .grade-icon{display:grid;place-items:center;width:64px;height:64px;border-radius:20px;font-size:33px;background:#ffeaf0}.grade-card .grade-shape{position:absolute;right:-27px;top:-27px;width:110px;height:110px;border-radius:50%;background:#f8dce4}.grade-card .grade-icon{position:relative}.grade-3 .grade-icon{background:#d8f5f1}.grade-3 .grade-shape{background:#e2f5f1}.grade-4 .grade-icon{background:#e7e3fb}.grade-4 .grade-shape{background:#eeebff}.grade-card h3{font-size:23px;margin:23px 0 7px;letter-spacing:-.6px}.grade-card p{color:#8490a2;font-size:13px;margin:0}.grade-card .arrow{position:absolute;bottom:20px;right:23px;display:grid;place-items:center;width:37px;height:37px;border-radius:12px;background:#f5f2ff;color:var(--violet);font-size:21px}.grade-3 .arrow{background:#edf9f7;color:var(--teal)}.grade-4 .arrow{background:#f2efff;color:var(--violet)}
+.bottom-tip{display:flex;gap:20px;align-items:center;background:#fff;border:1px solid var(--line);padding:23px 28px;border-radius:22px;margin-top:26px}.tip-icon{display:grid;place-items:center;width:50px;height:50px;background:#fff2d9;border-radius:17px;font-size:27px;flex:none}.bottom-tip strong{font-size:14px}.bottom-tip p{margin:4px 0 0;color:#8590a4;font-size:13px;line-height:1.6}
+.back-button{display:inline-flex;gap:8px;align-items:center;border:0;background:transparent;color:#7a8096;font-size:14px;font-weight:800;padding:10px 4px;margin:0 0 20px}.back-button:hover{color:var(--violet)}.page-lead{font-size:15px;line-height:1.7;color:#8790a3;margin:11px 0 28px}.page-header{display:flex;align-items:center;justify-content:space-between;gap:16px}.pill-class{display:inline-block;border-radius:100px;background:#f0eaff;color:#6c4db9;font-size:12px;font-weight:850;padding:9px 14px}.mini-heading{margin:0 0 17px;font-size:18px;letter-spacing:-.3px}.story-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.story-card{display:flex;flex-direction:column;text-align:left;min-height:184px;background:white;border:1px solid var(--line);border-radius:23px;padding:23px 25px;transition:transform .18s,box-shadow .18s;box-shadow:0 9px 25px #515d810b}.story-head{display:flex;align-items:center;justify-content:space-between}.story-symbol{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;font-size:24px;background:#f5f1ff}.story-index{color:#c5c8d8;font-size:13px;font-weight:850}.story-title{font-size:19px;letter-spacing:-.3px;font-weight:850;margin:13px 0 6px}.story-meta{display:flex;flex-wrap:wrap;gap:6px;color:#8490a6;font-size:13px;line-height:1.7}.story-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:17px;color:var(--violet);font-size:13px;font-weight:850}.read-mark{display:flex;gap:5px;align-items:center;color:#388f76;font-size:12px;font-weight:800}.secondary-row{display:flex;gap:12px;justify-content:center;margin-top:25px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;min-height:52px;padding:13px 22px;border:1px solid transparent;border-radius:15px;font-weight:850;font-size:14px;transition:transform .16s,background .16s;white-space:normal;text-align:center}.btn:hover:not(:disabled){transform:translateY(-1px)}.btn-primary{background:var(--violet);color:white;box-shadow:0 8px 20px #7157c92f}.btn-primary:hover:not(:disabled){background:var(--violet-dark)}.btn-outline{border-color:#e3e0f2;background:white;color:var(--violet-dark)}.btn-outline:hover{background:#f8f6ff}.btn-light{background:#f3effd;color:var(--violet-dark)}.btn-quiet{background:transparent;color:#838ba0}.btn-danger{background:#fff5f5;border-color:#ffd8dc;color:#d1515d}.btn-xl{font-size:17px;border-radius:18px;padding:19px 35px;min-height:63px}.btn:disabled{box-shadow:none}.inline-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px}
+/* Focused reading screen */
+body.is-reading{background:#f4f2fe}.is-reading .site-header,.is-reading .site-footer{display:none}.is-reading .main-content{width:min(930px,calc(100% - 38px));padding:27px 0 50px}.reader-shell{display:flex;flex-direction:column;align-items:center}.reader-top{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px;min-height:35px}.reader-top-note{color:#8276a8;font-size:12px;font-weight:850;letter-spacing:.3px}.reader-quit{background:transparent;border:0;color:#8e87a7;font-size:13px;font-weight:750;padding:8px 2px}.reader-card{width:100%;background:#fff;border-radius:28px;padding:clamp(29px,5vw,61px) clamp(23px,7vw,83px);border:1px solid #efebf8;box-shadow:0 25px 70px #665aa218}.reader-eyebrow{text-align:center;font-weight:850;font-size:12px;letter-spacing:1.7px;color:var(--violet);text-transform:uppercase}.reader-card h1{text-align:center;font-size:clamp(25px,3.6vw,34px);letter-spacing:-1px;margin:13px 0 28px}.story-text{font-size:var(--font-reading);line-height:1.84;letter-spacing:.1px;white-space:pre-line;color:#252a3b;max-width:720px;margin:0 auto;font-family:Arial,system-ui,sans-serif}.reader-divider{height:1px;background:#f0edf7;margin:36px 0 22px}.reader-control{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap}.reader-help{color:#8b92a7;font-size:13px;line-height:1.65;text-align:center;margin:16px auto 0;max-width:620px}.font-controls{display:inline-flex;align-items:center;gap:9px;color:#8c8fa6;font-size:13px}.font-controls button{width:42px;height:42px;border:1px solid #e7e4f2;border-radius:12px;background:#f9f7ff;color:#5f4cb8;font-weight:850}.font-controls button:disabled{opacity:.3}.reader-status{display:flex;justify-content:center;align-items:center;gap:12px;color:#5d7d73;font-weight:750;font-size:14px}.breathing-dot{width:10px;height:10px;border-radius:50%;background:#57b397;box-shadow:0 0 0 7px #e3f5ed;animation:breathe 2s ease-in-out infinite}@keyframes breathe{50%{box-shadow:0 0 0 11px #e3f5ed;opacity:.7}}.reader-error{margin-top:14px;text-align:center;color:#b46b55;font-size:13px;font-weight:700}.reader-note{font-size:12px;color:#a3a6b9;text-align:center;margin-top:16px}
+/* Quiz & results */
+.center-shell{width:min(760px,100%);margin:auto}.center-intro{text-align:center}.celebrate-icon{margin:3px auto 18px;display:grid;place-items:center;width:74px;height:74px;border-radius:25px;background:#eeebfc;font-size:35px}.center-intro h1{font-size:clamp(28px,4vw,39px);margin:0 0 10px;letter-spacing:-1.35px}.center-intro p{color:#8490a3;line-height:1.7;font-size:15px;margin:0 auto 29px;max-width:520px}.questions-list{display:grid;gap:16px}.question-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:23px 26px}.question-topline{color:var(--violet);font-weight:850;font-size:12px;letter-spacing:.8px;text-transform:uppercase}.question-card h2{font-size:18px;letter-spacing:-.3px;line-height:1.4;margin:9px 0 17px}.option-list{display:grid;gap:9px}.answer-option{border:1.5px solid #e9eaf2;background:#fff;display:flex;gap:12px;align-items:center;padding:13px 15px;min-height:50px;border-radius:12px;text-align:left;color:#4c5873;font-size:14px;font-weight:680;transition:background .16s,border-color .16s}.answer-option:hover{border-color:#c2b7ef;background:#faf8ff}.answer-option.is-selected{background:#f2edff;border-color:#9781db;color:#533ba4}.option-circle{display:grid;place-items:center;flex:none;border:1px solid #dfe1ed;border-radius:50%;width:26px;height:26px;color:#99a1b5;font-size:12px;font-weight:850}.answer-option.is-selected .option-circle{background:var(--violet);border-color:var(--violet);color:#fff}.quiz-action{text-align:center;margin-top:25px}.quiz-counter{font-size:12px;color:#959db0;margin:12px 0}
+.result-header{background:#f1edff;border-radius:28px;padding:32px 28px;text-align:center;margin-bottom:20px}.result-header .celebrate-icon{background:white}.result-header h1{font-size:clamp(27px,4vw,37px);margin:0 0 10px;letter-spacing:-1px}.result-header p{color:#777c99;font-size:14px;line-height:1.7;margin:auto;max-width:510px}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.stat-box{background:white;border:1px solid var(--line);border-radius:21px;padding:19px 12px;text-align:center}.stat-icon{font-size:20px}.stat-num{font-size:clamp(23px,3.8vw,32px);font-weight:850;letter-spacing:-1px;margin:8px 0 3px}.stat-label{font-size:12px;line-height:1.5;color:#9098aa}.insight-note{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px 19px;color:#727d96;font-size:13px;line-height:1.65}.review-toggle{border:0;background:transparent;color:var(--violet-dark);font-size:14px;font-weight:850;padding:20px 0 13px}.review-list{display:grid;gap:10px;margin:0 0 14px}.review-item{padding:16px 18px;background:white;border:1px solid var(--line);border-radius:15px;font-size:13px;line-height:1.6}.review-item strong{display:block;color:#3e4864;margin-bottom:4px}.review-item .review-answer{color:#5e9d85}.review-item .review-your{color:#9a7b81}.result-actions{margin-top:19px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+/* Progress and parent screens */
+.panel{background:white;border:1px solid var(--line);border-radius:26px;padding:26px 28px;margin-top:18px}.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:23px 0 4px}.filter-btn{border:1px solid #e8e5f4;background:white;color:#858ba2;border-radius:100px;padding:11px 16px;font-weight:850;font-size:13px}.filter-btn.active{background:var(--violet);color:white;border-color:var(--violet)}.progress-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}.progress-kpi{border:1px solid #efedf4;background:#fdfdff;padding:22px 17px;border-radius:19px}.progress-kpi strong{display:block;font-size:28px;margin:7px 0;letter-spacing:-1px}.progress-kpi small{color:#8691a6;line-height:1.5;font-size:12px}.progress-kpi .kpi-emoji{font-size:22px}.shelf{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:26px 0 14px;padding:24px 19px 13px;border-bottom:9px solid #d9cba8;background:#fcfaf5;border-radius:20px 20px 5px 5px}.book-spine{height:89px;width:48px;border-radius:7px 9px 3px 3px;background:#bdb5d1;color:white;display:grid;place-items:center;transform:rotate(var(--tilt,0deg));font-size:23px;box-shadow:inset -6px 0 0 #ffffff2e}.book-spine.read{background:var(--bookcolor,#7e69cb)}.book-spine.unread{background:#e4e1eb;color:#b2a9c4}.panel h2{font-size:20px;letter-spacing:-.5px;margin:0 0 7px}.panel p{font-size:13px;color:#8992a6;line-height:1.7}.mini-bars{display:flex;height:135px;align-items:end;gap:13px;margin-top:27px;padding:0 2px 23px;position:relative;border-bottom:1px solid #ebeaf2}.bar-wrap{min-width:0;flex:1;display:flex;flex-direction:column;height:100%;align-items:center;justify-content:end;position:relative}.bar{width:min(53px,85%);background:linear-gradient(180deg,#a58ce9,#7158cb);border-radius:10px 10px 4px 4px;min-height:9px;position:relative}.bar.repeated{background:linear-gradient(180deg,#b9c2d9,#8390b3)}.bar-value{font-size:11px;color:#5f568b;font-weight:850;position:absolute;top:-21px;width:100%;text-align:center}.bar-label{position:absolute;top:calc(100% + 6px);font-size:10px;color:#9aa2b3;white-space:nowrap}.history-list{display:grid;gap:0}.history-item{display:flex;justify-content:space-between;align-items:center;gap:13px;padding:15px 0;border-bottom:1px solid #f0eef5}.history-item:last-child{border:0}.history-item-title{font-size:14px;font-weight:800}.history-item-meta{font-size:12px;color:#919aad;margin-top:4px}.history-item-result{font-size:12px;color:#6c70a0;text-align:right;white-space:nowrap}.empty-state{text-align:center;padding:42px 18px}.empty-state .empty-icon{font-size:48px}.empty-state h2{font-size:23px;margin:15px 0 6px}.empty-state p{max-width:440px;margin:0 auto 22px}.parent-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:24px}.parent-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:25px}.parent-card .parent-icon{font-size:26px;margin-bottom:11px}.parent-card h2{font-size:17px;margin:0 0 9px}.parent-card p{font-size:13px;color:#808ba0;line-height:1.8;margin:0}.settings-section{margin-top:19px}.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:16px}.toggle-row strong{font-size:14px}.toggle-row p{margin:4px 0 0}.switch{position:relative;min-width:55px;width:55px;height:31px;display:block}.switch input{position:absolute;opacity:0;inset:0;cursor:pointer}.switch-shape{position:absolute;inset:0;background:#cbd0db;border-radius:30px;pointer-events:none;transition:background .2s}.switch-shape:after{content:"";position:absolute;width:23px;height:23px;left:4px;top:4px;background:white;border-radius:50%;box-shadow:0 2px 5px #0002;transition:transform .2s}.switch input:checked+.switch-shape{background:#7e63d0}.switch input:checked+.switch-shape:after{transform:translateX(24px)}.switch input:focus-visible+.switch-shape{outline:3px solid #ffb64e;outline-offset:4px}.settings-buttons{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:23px}.microcopy{color:#a0a6b5;font-size:12px;line-height:1.6}.subtle-separator{height:1px;background:#edecf4;margin:20px 0}
+@media(max-width:800px){.hero{padding:39px;grid-template-columns:1.2fr .55fr}.hero-art{width:230px}.grade-grid{gap:12px}.grade-card{padding:22px 18px;min-height:213px}.grade-card h3{font-size:20px}.main-content{padding-top:30px}.story-grid{gap:12px}.reader-card{padding:37px 36px}}
+@media(max-width:650px){.site-header{height:77px}.header-inner,.footer-inner{width:calc(100% - 32px)}.brand-mark{width:43px;height:43px;border-radius:14px}.brand-title{font-size:23px}.brand-title small{font-size:8px;letter-spacing:.45px}.top-nav{gap:0}.nav-link{padding:10px 9px;font-size:12px}.nav-link-parent{display:none}.main-content{width:calc(100% - 30px);padding:21px 0 42px}.hero{grid-template-columns:1fr;min-height:0;padding:32px 25px 26px;border-radius:26px;margin-bottom:33px}.hero h1{font-size:36px;letter-spacing:-1.7px;max-width:480px}.hero p{font-size:14px}.hero-art{width:185px;position:absolute;right:-48px;bottom:-69px;opacity:.35;pointer-events:none}.hero-copy{z-index:2}.hero-pills{position:relative;max-width:330px;margin-top:24px}.hero-pill{font-size:11px}.section-heading{align-items:start}.section-heading h2{font-size:25px}.soft-note{display:none}.grade-grid{grid-template-columns:1fr;gap:12px}.grade-card{min-height:120px;display:grid;grid-template-columns:55px 1fr;grid-template-rows:32px 24px;align-items:center;gap:0 17px;padding:18px 20px;border-radius:21px}.grade-card .grade-icon{grid-row:1/3;width:55px;height:55px;font-size:29px;border-radius:16px}.grade-card h3{font-size:21px;margin:0;align-self:end}.grade-card p{font-size:12px;align-self:start;margin-top:6px}.grade-card .grade-shape{right:-44px;top:-57px}.grade-card .arrow{bottom:17px;right:17px;width:33px;height:33px}.bottom-tip{padding:18px;gap:13px;margin-top:18px}.tip-icon{width:43px;height:43px;border-radius:13px;font-size:23px}.bottom-tip p{font-size:12px}.story-grid{grid-template-columns:1fr}.story-card{min-height:166px;padding:20px}.reader-card{border-radius:19px;padding:27px 22px}.is-reading .main-content{width:calc(100% - 20px);padding:13px 0 35px}.reader-top{padding:0 8px;margin-bottom:10px}.story-text{font-size:var(--font-reading);line-height:1.78}.reader-card h1{margin-bottom:24px}.reader-divider{margin:27px 0 21px}.reader-control .btn{width:100%}.reader-help{font-size:12px}.question-card{padding:20px;border-radius:18px}.center-intro p{font-size:14px}.result-header{padding:25px 19px}.stat-grid{gap:7px}.stat-box{padding:15px 5px}.stat-num{font-size:23px}.stat-label{font-size:11px}.parent-grid{grid-template-columns:1fr}.panel{padding:22px 18px}.progress-kpis{gap:8px}.progress-kpi{padding:14px 9px}.progress-kpi strong{font-size:23px}.progress-kpi small{font-size:11px}.footer-inner{flex-direction:column;align-items:start;justify-content:center;gap:5px;font-size:11px}.history-item-result{white-space:normal;max-width:102px}}
+@media(max-width:360px){.top-nav .nav-link{padding-inline:5px;font-size:11px}.brand-title small{display:none}.hero h1{font-size:32px}.brand-mark{width:38px;height:38px}.header-inner{gap:6px}.reader-card{padding-inline:17px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+/* На небольших экранах все три раздела доступны без скрытого меню. */
+@media(max-width:650px){
+  .site-header{height:auto}
+  .header-inner{min-height:118px;flex-wrap:wrap;justify-content:space-between;gap:7px 12px;padding:11px 0 7px}
+  .top-nav{order:2;width:100%;justify-content:space-between;gap:5px}
+  .nav-link{flex:1;white-space:nowrap;text-align:center;padding:9px 6px}
+  .nav-link-parent{display:inline-block;border:0;background:transparent;color:#64708b;padding:9px 6px}
+  .nav-link-parent.active{background:#f1effc;color:var(--violet-dark)}
+}
+
+
+/* Класс заметен сразу на карточке, в том числе на планшете и телефоне. */
+.grade-card{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:16px}
+.grade-card-header{position:relative;z-index:1;display:flex;align-items:center;gap:17px;flex-wrap:nowrap;width:100%}
+.grade-card-title{display:block;color:#253049;font-size:clamp(24px,2.7vw,30px);font-weight:850;line-height:1.12;letter-spacing:-.8px;white-space:nowrap}
+.grade-card p{margin-top:auto;font-size:14px;padding-right:37px}
+.grade-card.grade-2 .grade-card-title{color:#a8405b}
+.grade-card.grade-3 .grade-card-title{color:#13796c}
+.grade-card.grade-4 .grade-card-title{color:#6344af}
+@media(max-width:800px){.grade-card{padding:20px 16px;gap:18px}.grade-card-header{gap:10px}.grade-card-title{font-size:24px}.grade-card .grade-icon{width:52px;height:52px;font-size:28px}}
+@media(max-width:650px){.grade-card{display:flex;flex-direction:column;align-items:stretch;justify-content:center;min-height:125px;gap:9px;padding:17px 20px}.grade-card-header{gap:16px}.grade-card-title{font-size:26px}.grade-card .grade-icon{width:55px;height:55px}.grade-card p{margin:0 0 0 71px;padding-right:35px;line-height:1.3;font-size:12px}}
+
+</style>
+  <script>
+/* Истории и вопросы из «02_Банк тестов.docx», 20.10.2026. */
+window.READING_TEXTS = [
+  {
+    "id": "g2-01",
+    "grade": 2,
+    "title": "Тёплая варежка",
+    "topic": "дружба",
+    "text": "После уроков Маша вышла во двор. На скамейке сидел мальчик Лёня. Он искал что-то под ногами и выглядел расстроенным. Маша спросила, что случилось. Оказалось, Лёня потерял одну варежку. На улице уже шёл снег, а руки быстро мёрзли. Ребята вместе осмотрели дорожку, горку и качели. Возле берёзы Маша заметила красный уголок в сугробе. Это была пропажа! Лёня обрадовался и стряхнул снег. Он поблагодарил Машу. По дороге домой ребята решили завтра слепить большого снеговика.",
+    "word_count": 72,
+    "questions": [
+      {
+        "question": "Что потерял Лёня?",
+        "options": [
+          "Варежку",
+          "Шапку",
+          "Книгу"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Где Маша нашла пропажу?",
+        "options": [
+          "Под скамейкой",
+          "Возле берёзы",
+          "В классе"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Почему Лёня обрадовался?",
+        "options": [
+          "Получил подарок",
+          "Отменили уроки",
+          "Нашёл варежку"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "g2-02",
+    "grade": 2,
+    "title": "Секретный росток",
+    "topic": "природа",
+    "text": "На окне у Димы стоял маленький горшок с землёй. Однажды учительница дала каждому ученику по семечку фасоли. Дима посадил своё семечко, полил землю и поставил горшок на свет. Наутро ничего не изменилось. Через день тоже. Мальчик уже хотел раскопать землю, но мама попросила его подождать. На пятый день показался зелёный росток. Дима радостно позвал маму. Теперь каждое утро он проверял, как растёт фасоль, и осторожно поливал её. Мальчик понял, что растениям нужны свет, вода и терпение.",
+    "word_count": 76,
+    "questions": [
+      {
+        "question": "Что посадил Дима?",
+        "options": [
+          "Жёлудь",
+          "Фасоль",
+          "Лук"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Почему мама попросила подождать?",
+        "options": [
+          "Горшок был пустым",
+          "Было уже поздно",
+          "Ростку нужно время"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Что помогало растению расти?",
+        "options": [
+          "Свет и вода",
+          "Темнота и холод",
+          "Только ветер"
+        ],
+        "correct_index": 0
+      }
+    ]
+  },
+  {
+    "id": "g2-03",
+    "grade": 2,
+    "title": "Письмо для бабушки",
+    "topic": "семья",
+    "text": "В субботу Аня решила написать бабушке письмо. Она взяла лист с нарисованными цветами и красивую ручку. Сначала девочка рассказала, как прошла неделя в школе. Потом написала о котёнке, который научился прыгать на подоконник. В конце Аня нарисовала большое сердце. Папа помог вложить письмо в конверт и подписать адрес. Вместе они опустили конверт в почтовый ящик. Через несколько дней бабушка позвонила. Она сказала, что читала письмо два раза и улыбалась. Аня поняла, что добрые слова могут порадовать даже на расстоянии.",
+    "word_count": 79,
+    "questions": [
+      {
+        "question": "Кому писала Аня?",
+        "options": [
+          "Подруге",
+          "Учительнице",
+          "Бабушке"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Что нарисовала Аня в конце?",
+        "options": [
+          "Сердце",
+          "Дом",
+          "Кошку"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Как бабушка отреагировала?",
+        "options": [
+          "Рассердилась",
+          "Обрадовалась",
+          "Забыла о письме"
+        ],
+        "correct_index": 1
+      }
+    ]
+  },
+  {
+    "id": "g2-04",
+    "grade": 2,
+    "title": "Необычный мост",
+    "topic": "поступок",
+    "text": "Весной ручей рядом с домом стал широким. Коля и Саша хотели попасть на другую сторону, где росли первые цветы. Но прыгать через воду было опасно. Ребята нашли две доски и позвали дедушку. Вместе они выбрали прочное место и сделали небольшой мостик. Дедушка проверил, крепко ли лежат доски. Только после этого мальчики осторожно перешли ручей. На берегу они увидели жёлтые цветы и услышали пение птиц. Коля сказал, что хороший мост помогает не только перейти воду, но и сделать путь безопасным для других.",
+    "word_count": 81,
+    "questions": [
+      {
+        "question": "Почему ребята не прыгнули через ручей?",
+        "options": [
+          "Было опасно",
+          "Было слишком жарко",
+          "Они боялись цветов"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Кого ребята позвали на помощь?",
+        "options": [
+          "Учителя",
+          "Дедушку",
+          "Водителя"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Что дедушка сделал перед переходом?",
+        "options": [
+          "Собрал цветы",
+          "Пошёл домой",
+          "Проверил доски"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "g2-05",
+    "grade": 2,
+    "title": "Кормушка у окна",
+    "topic": "животные",
+    "text": "Зимой Лиза увидела за окном синицу. Птичка прыгала по веткам и искала еду. Лиза рассказала об этом брату. Ребята попросили взрослых помочь сделать кормушку. Папа прикрепил её к дереву во дворе. Дети положили внутрь подходящий корм для птиц. На следующий день прилетела одна синица, потом ещё две. Лиза наблюдала за ними из окна и записывала, сколько птиц прилетает утром. Когда корм заканчивался, дети пополняли кормушку. Теперь у ребят появилось полезное зимнее дело.",
+    "word_count": 72,
+    "questions": [
+      {
+        "question": "Кого увидела Лиза?",
+        "options": [
+          "Белку",
+          "Синицу",
+          "Бабочку"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Кто помог установить кормушку?",
+        "options": [
+          "Соседка",
+          "Бабушка",
+          "Папа"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Что дети делали, когда корм заканчивался?",
+        "options": [
+          "Пополняли кормушку",
+          "Прятали кормушку",
+          "Закрывали окно"
+        ],
+        "correct_index": 0
+      }
+    ]
+  },
+  {
+    "id": "g3-01",
+    "grade": 3,
+    "title": "Маленькая библиотека",
+    "topic": "дружба",
+    "text": "В школьном коридоре стоял пустой книжный шкаф. Однажды учитель предложил превратить его в маленькую библиотеку. Каждый мог принести прочитанную книгу и взять другую. Сначала ребята сомневались: вдруг книги потеряются? Тогда Соня придумала простое правило. Нужно записывать в тетрадь название книги и дату, когда её взяли. Уже через неделю полки заполнились рассказами, сказками и книгами о природе. Особенно популярной оказалась история о далёком острове. Даже те ученики, которые редко читали дома, стали заглядывать в шкаф во время перемены. В конце месяца класс обсудил прочитанное. Ребята заметили, что книги интереснее, когда можно делиться впечатлениями. А учитель пообещал выделить для маленькой библиотеки ещё одну полку.",
+    "word_count": 102,
+    "questions": [
+      {
+        "question": "Что решили сделать из пустого шкафа?",
+        "options": [
+          "Место для игрушек",
+          "Шкаф для одежды",
+          "Маленькую библиотеку"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Зачем Соня предложила вести тетрадь?",
+        "options": [
+          "Чтобы учитывать книги",
+          "Чтобы рисовать обложки",
+          "Чтобы выставлять оценки"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Что заметили ученики к концу месяца?",
+        "options": [
+          "Все книги одинаковые",
+          "Чтение интереснее с обсуждением",
+          "Лучше не брать книги"
+        ],
+        "correct_index": 1
+      }
+    ]
+  },
+  {
+    "id": "g3-02",
+    "grade": 3,
+    "title": "Следы у реки",
+    "topic": "наблюдательность",
+    "text": "В воскресенье Артём и дедушка отправились гулять вдоль реки. Ночью прошёл небольшой снег, поэтому на тропинке хорошо виднелись следы. Сначала мальчик заметил длинные прыжки зайца. Чуть дальше под елью были маленькие отпечатки птичьих лапок. Артём хотел побежать вперёд, но дедушка предложил остановиться и внимательно осмотреть берег. Возле кустов они нашли цепочку следов, которая вела к воде и возвращалась обратно. Дедушка объяснил, что по одному следу нельзя всегда точно узнать животное. Нужно смотреть на размер, расстояние между отпечатками и окружающие признаки. Дома Артём нарисовал в тетради всё, что увидел. На следующий день он показал рисунки одноклассникам. Ребята решили сделать общий альбом зимних наблюдений.",
+    "word_count": 102,
+    "questions": [
+      {
+        "question": "Что помогло увидеть следы?",
+        "options": [
+          "Свежий снег",
+          "Сильный дождь",
+          "Высокая трава"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Почему дедушка попросил не спешить?",
+        "options": [
+          "Чтобы вернуться домой",
+          "Чтобы внимательно изучить следы",
+          "Чтобы найти грибы"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Как Артём сохранил наблюдения?",
+        "options": [
+          "Записал на диктофон",
+          "Сфотографировал учебник",
+          "Нарисовал в тетради"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "g3-03",
+    "grade": 3,
+    "title": "Три решения для клумбы",
+    "topic": "командная работа",
+    "text": "Перед школой появилась новая клумба. Класс получил задание придумать, как за ней ухаживать. Петя предложил поливать цветы каждый день, не глядя на погоду. Ира напомнила, что после дождя почва бывает влажной и лишняя вода может навредить растениям. Тогда ребята решили проверять землю перед поливом. Второй вопрос оказался сложнее: кто будет заботиться о клумбе во время каникул? Дети составили график дежурств вместе с родителями. Наконец, учительница попросила подумать, как узнать, хорошо ли растут цветы. Даша предложила каждую неделю делать фотографию с одного места и записывать изменения. Через месяц фотографии показали, что растения стали выше, а на некоторых появились бутоны. Класс убедился, что общее дело получается лучше, когда решения обсуждают вместе.",
+    "word_count": 109,
+    "questions": [
+      {
+        "question": "Почему клумбу не решили поливать ежедневно?",
+        "options": [
+          "Не было лейки",
+          "Дожди тоже увлажняют почву",
+          "Цветы не любят воду"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Для чего составили график?",
+        "options": [
+          "Для контрольных работ",
+          "Для спортивных игр",
+          "Для дежурств на каникулах"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Как ребята наблюдали рост цветов?",
+        "options": [
+          "Делали еженедельные фотографии",
+          "Срывали листья",
+          "Пересаживали каждый день"
+        ],
+        "correct_index": 0
+      }
+    ]
+  },
+  {
+    "id": "g3-04",
+    "grade": 3,
+    "title": "Потерянная карта",
+    "topic": "приключение",
+    "text": "В краеведческом музее проходила игра для школьников. Команды получали карту с загадками и должны были найти несколько предметов в залах. Команда Веры быстро разгадала первые два задания. Но перед последним залом ребята обнаружили, что карта исчезла. Один ученик предложил начать игру сначала. Вера вспомнила, что они раскладывали карту на скамейке возле макета старого города. Ребята вернулись туда и нашли лист под буклетом. Теперь времени осталось совсем мало. Вместо споров команда распределила задачи: двое искали нужный экспонат, а остальные читали описание. В итоге они успели найти ответ за минуту до конца игры. Приз команда не выиграла, зато экскурсовод похвалил ребят за спокойствие и умение договариваться.",
+    "word_count": 104,
+    "questions": [
+      {
+        "question": "Где происходила игра?",
+        "options": [
+          "В лесу",
+          "На стадионе",
+          "В музее"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Где нашлась карта?",
+        "options": [
+          "Возле макета города",
+          "В школьном портфеле",
+          "У экскурсовода"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Что помогло команде завершить задание?",
+        "options": [
+          "Громкий спор",
+          "Совместное распределение задач",
+          "Случайная подсказка"
+        ],
+        "correct_index": 1
+      }
+    ]
+  },
+  {
+    "id": "g3-05",
+    "grade": 3,
+    "title": "Вечер без света",
+    "topic": "семья",
+    "text": "Однажды вечером в доме ненадолго выключили электричество. Сначала брат и сестра расстроились: нельзя было посмотреть мультфильм и закончить игру на компьютере. Мама принесла фонарик и предложила устроить вечер историй. Каждый должен был придумать начало рассказа, а следующий продолжить его. Папа начал с путешественника, который нашёл странную записку в лесу. Лена добавила к истории говорящего филина, а Миша придумал тайный мост через реку. Получилась такая смешная сказка, что все несколько раз смеялись. Когда свет снова появился, дети не стали сразу включать экран. Они попросили записать историю, чтобы потом нарисовать к ней картинки. Так неожиданное неудобство превратилось в семейное приключение.",
+    "word_count": 98,
+    "questions": [
+      {
+        "question": "Почему дети сначала расстроились?",
+        "options": [
+          "Нельзя было пользоваться экранами",
+          "Пошёл дождь",
+          "Пропали игрушки"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Как семья провела вечер?",
+        "options": [
+          "Пекла торт",
+          "Придумывала общий рассказ",
+          "Пошла в магазин"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Почему дети не включили экран сразу?",
+        "options": [
+          "Не заметили свет",
+          "Ушли спать",
+          "Хотели сохранить историю"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "g4-01",
+    "grade": 4,
+    "title": "День научных вопросов",
+    "topic": "исследование",
+    "text": "В школе объявили День научных вопросов. Каждый участник должен был выбрать обычное явление и попытаться объяснить его с помощью наблюдений. Полина захотела узнать, почему мокрое полотенце на батарее высыхает быстрее, чем на прохладной вешалке. Сначала девочка записала своё предположение: тепло ускоряет испарение воды. Вместе с учителем она составила безопасный план опыта. Два одинаковых небольших кусочка ткани намочили одинаковым количеством воды. Один положили в тёплом месте, другой оставили в прохладном. Через определённые промежутки времени Полина сравнивала их влажность и отмечала результаты. Ткань в тёплом месте действительно высохла раньше. Однако учитель объяснил, что на испарение влияют также движение воздуха и влажность. Полина сделала важный вывод: удачный опыт отвечает на один вопрос, но иногда рождает несколько новых. На школьной выставке её работа понравилась посетителям не яркими рисунками, а ясным объяснением того, как она проверяла свою идею.",
+    "word_count": 133,
+    "questions": [
+      {
+        "question": "Какое предположение проверяла Полина?",
+        "options": [
+          "Холод ускоряет высыхание",
+          "Тепло ускоряет высыхание",
+          "Цвет ткани меняет погоду"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Зачем понадобились одинаковые кусочки ткани?",
+        "options": [
+          "Чтобы их подарить",
+          "Чтобы украсить стенд",
+          "Чтобы сравнение было честнее"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Какой вывод сделала Полина?",
+        "options": [
+          "Один опыт может породить новые вопросы",
+          "Все опыты всегда дают один ответ",
+          "Вопросы лучше не задавать"
+        ],
+        "correct_index": 0
+      }
+    ]
+  },
+  {
+    "id": "g4-02",
+    "grade": 4,
+    "title": "Письмо из будущего",
+    "topic": "выбор",
+    "text": "На классном часе ребятам предложили необычное задание: написать письмо самим себе через пять лет. Некоторые сразу стали перечислять будущие достижения. Кирилл долго смотрел на чистый лист. Он хотел написать, что обязательно станет знаменитым спортсменом, но боялся ошибиться. Тогда учительница напомнила, что письмо не должно предсказывать будущее. Оно может помочь понять, что важно сейчас. Кирилл написал о друзьях, с которыми он тренировался, о радости после сложной победы и о том, как учился не бросать дело после неудачи. Он добавил вопрос будущему себе: «Ты по-прежнему умеешь радоваться маленьким успехам?» Дома мальчик перечитал письмо и понял, что ему важны не только медали. Он хотел стать человеком, который умеет работать в команде и поддерживать других. Письма сложили в конверты и договорились открыть через несколько лет. Никто не знал, как всё сложится, но каждый мог уже сегодня сделать небольшой шаг к своей цели.",
+    "word_count": 138,
+    "questions": [
+      {
+        "question": "Зачем писали письма самим себе?",
+        "options": [
+          "Чтобы угадать все события",
+          "Чтобы получить школьную оценку",
+          "Чтобы подумать о важных целях"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Почему Кирилл изменил первоначальный замысел?",
+        "options": [
+          "Понял, что важно не только достижение",
+          "Передумал заниматься спортом",
+          "Не нашёл ручку"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Какая мысль лучше всего передаёт смысл текста?",
+        "options": [
+          "Лучше не строить планов",
+          "Путь к цели важен не меньше результата",
+          "Побеждать нужно любой ценой"
+        ],
+        "correct_index": 1
+      }
+    ]
+  },
+  {
+    "id": "g4-03",
+    "grade": 4,
+    "title": "Тайна старой фотографии",
+    "topic": "история",
+    "text": "В семейном альбоме Настя нашла фотографию деревянного моста. На обороте стояла дата, но название места никто не написал. Девочка спросила дедушку, знаком ли ему этот мост. Дедушка узнал знакомые перила и вспомнил, что в детстве переходил по нему небольшую реку. Через несколько лет мост заменили новым, а старый разобрали. Настя решила узнать, где именно был сделан снимок. Она сравнила дедушкины воспоминания со старой картой посёлка и фотографиями из местного музея. На одном снимке рядом с мостом виднелась мельница, которую дедушка тоже помнил. Так удалось определить место почти точно. Настя подготовила короткий рассказ для школьного проекта. В конце она отметила, что семейные истории полезно проверять по нескольким источникам: человеческая память сохраняет многое, но отдельные детали могут забываться. Дедушка с интересом слушал выступление внучки. Благодаря её поискам он вспомнил ещё несколько историй о родном посёлке.",
+    "word_count": 133,
+    "questions": [
+      {
+        "question": "Что помогло Насте определить место?",
+        "options": [
+          "Сравнение разных источников",
+          "Случайная догадка",
+          "Надпись на мосту"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Почему одних воспоминаний было недостаточно?",
+        "options": [
+          "Дедушка не любил рассказывать",
+          "Детали могут забываться",
+          "Фотография была новой"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Какой навык проявила Настя?",
+        "options": [
+          "Быстрое рисование",
+          "Подсчёт денег",
+          "Проверка сведений"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "g4-04",
+    "grade": 4,
+    "title": "Экспедиция во дворе",
+    "topic": "природа",
+    "text": "Весной четвероклассники решили исследовать, какие птицы обитают рядом со школой. Сначала всем хотелось просто посчитать пернатых за одну перемену. Но учитель биологии объяснил, что такое наблюдение может быть неточным: в разную погоду птицы ведут себя по-разному. Ребята договорились выходить во двор несколько раз в неделю примерно в одно и то же время. Они записывали дату, погоду, место и число замеченных птиц. Чтобы не ошибаться, ученики пользовались определителем и фотографиями, а незнакомые виды отмечали отдельно. Через месяц оказалось, что чаще всего у школы встречались воробьи и голуби. Несколько раз дети заметили трясогузку, а однажды увидели дятла. На обсуждении результатов Миша заявил, что теперь они знают всех птиц своего района. Оля возразила: наблюдения велись только весной и только возле школы. Класс согласился, что выводы должны соответствовать собранным данным. Ребята решили продолжить исследование осенью, чтобы сравнить результаты.",
+    "word_count": 134,
+    "questions": [
+      {
+        "question": "Почему одного наблюдения было мало?",
+        "options": [
+          "Птицы не умеют летать",
+          "Поведение птиц меняется",
+          "Во дворе было слишком тихо"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "Что записывали ученики?",
+        "options": [
+          "Только названия друзей",
+          "Только домашнее задание",
+          "Дату, погоду и наблюдения"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Почему Оля возразила Мише?",
+        "options": [
+          "Данные были ограничены местом и сезоном",
+          "Она не любила птиц",
+          "Она потеряла записи"
+        ],
+        "correct_index": 0
+      }
+    ]
+  },
+  {
+    "id": "g4-05",
+    "grade": 4,
+    "title": "Робот для школьной выставки",
+    "topic": "командная работа",
+    "text": "К школьной выставке технологий трое друзей решили собрать небольшого робота, который мог бы двигаться по линии на полу. Дима отвечал за сборку корпуса, Лера изучала датчики, а Саша писал программу. Во время первой проверки робот внезапно свернул в сторону и остановился. Дима решил, что неисправно колесо, Саша подозревал ошибку в коде, а Лера предложила не спорить, пока они не проведут несколько проверок. Сначала ребята убедились, что колёса вращаются свободно. Затем посмотрели, какие значения получает датчик от светлой поверхности и тёмной линии. Оказалось, что он закреплён слишком высоко и плохо различает контраст. После изменения крепления робот проехал весь маршрут. На выставке команда рассказала не только об удачном результате, но и о своих ошибках. Посетители задавали много вопросов, а младшие школьники особенно заинтересовались тем, как друзья нашли причину неполадки. Ребята поняли, что в инженерии полезно проверять гипотезы по одной и внимательно записывать результаты.",
+    "word_count": 141,
+    "questions": [
+      {
+        "question": "Почему робот не двигался по линии?",
+        "options": [
+          "В комнате не было света",
+          "Роботу не хватило краски",
+          "Датчик был слишком высоко"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "Как команда нашла причину?",
+        "options": [
+          "Проверяла возможные причины по очереди",
+          "Угадала с первого раза",
+          "Отложила робота навсегда"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Чему научились друзья?",
+        "options": [
+          "Никогда не ошибаться",
+          "Проверять гипотезы и фиксировать результаты",
+          "Не рассказывать о трудностях"
+        ],
+        "correct_index": 1
+      }
+    ]
+  }
+];
+
+</script>
+
+</head>
+<body>
+  <div class="site-shell" id="site-shell">
+    <header class="site-header" id="site-header">
+      <div class="header-inner">
+        <button class="brand-button" type="button" data-action="home" aria-label="Читай-ка, на главную">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 11.2c6.1-2.4 11.2-1.4 12 1.2 2.2-2.6 7.3-3.6 12-1.2V29c-6.1-2.1-10.4-1.4-12 1.8-2.2-3.2-6.7-3.9-12-1.8V11.2Z" fill="white"/><path d="M20 12.4v18.4M11.7 15.1c2.1-.5 3.8-.3 5.3.5M23 15.6c1.5-.8 3.2-1 5.3-.5" stroke="#6F55C6" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="brand-title">читай<span>-ка</span><small>клуб маленьких читателей</small></span>
+        </button>
+        <nav class="top-nav" aria-label="Основная навигация">
+          <button type="button" class="nav-link" data-action="home" data-nav="home">Главная</button>
+          <button type="button" class="nav-link" data-action="progress" data-nav="progress">Мой прогресс</button>
+          <button type="button" class="nav-link nav-link-parent" data-action="parents" data-nav="parents">Для взрослых</button>
+        </nav>
+      </div>
+    </header>
+    <main id="app" class="main-content" tabindex="-1"></main>
+    <footer class="site-footer" id="site-footer">
+      <div class="footer-inner"><span>С любовью к историям <span aria-hidden="true">✦</span> и без гонки за секундами</span><span>2, 3 и 4 классы · Всё работает без интернета</span></div>
+    </footer>
+  </div>
+  <div id="screen-reader-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+  <script>
+/* Читай-ка. Vanilla JavaScript, без внешних сервисов и микрофона. */
+(() => {
+  'use strict';
+  const DATA = Array.isArray(window.READING_TEXTS) ? window.READING_TEXTS : [];
+  const HISTORY_KEY = 'chitaika.history.v1';
+  const OPTIONS_KEY = 'chitaika.options.v1';
+  const app = document.getElementById('app');
+  const pageStatus = document.getElementById('screen-reader-status');
+  const metadata = {
+    2: { emoji: '🌷', title: '2 класс', caption: 'Начинаю путешествие', color: '#eb8c9c' },
+    3: { emoji: '🌿', title: '3 класс', caption: 'Открываю новые миры', color: '#45a99b' },
+    4: { emoji: '🚀', title: '4 класс', caption: 'Исследую и узнаю', color: '#836bc9' }
+  };
+  const topicEmojis = {
+    'дружба': '🤝', 'природа': '🌱', 'семья': '💌', 'поступок': '🌉',
+    'животные': '🐦', 'наблюдательность': '🐾', 'командная работа': '🤝',
+    'приключение': '🗺️', 'исследование': '🔬', 'выбор': '✨', 'история': '📜'
+  };
+  const opts = safeRead(OPTIONS_KEY, {});
+  const state = {
+    view: 'home', grade: 2, progressGrade: 2, textId: null,
+    startedAt: null, running: false, elapsedSeconds: null, answers: [null, null, null],
+    justFinished: null, flash: '', revealReview: false,
+    fontSize: Number.isFinite(opts.fontSize) ? Math.max(20, Math.min(32, opts.fontSize)) : 25,
+    saveEnabled: typeof opts.saveEnabled === 'boolean' ? opts.saveEnabled : true,
+    attempts: normalizeHistory(safeRead(HISTORY_KEY, [])),
+    sessionHistory: [], storageProblem: false
+  };
+
+  function safeRead(key, fallback) {
+    try { const str = localStorage.getItem(key); return str === null ? fallback : JSON.parse(str); }
+    catch { return fallback; }
+  }
+  function safeSave(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+    catch { state.storageProblem = true; return false; }
+  }
+  function normalizeHistory(items) {
+    if (!Array.isArray(items)) return [];
+    return items.filter(a => a && typeof a.text_id === 'string' && DATA.some(t => t.id === a.text_id)
+      && Number.isFinite(a.elapsed_seconds) && a.elapsed_seconds > 0 && Number.isFinite(a.wpm_approx)
+      && Number.isInteger(a.correct_answers) && typeof a.completed_at === 'string').slice(-300);
+  }
+  function saveOptions() { safeSave(OPTIONS_KEY, { fontSize: state.fontSize, saveEnabled: state.saveEnabled }); }
+  function activeStory() { return DATA.find(t => t.id === state.textId) || null; }
+  function records() {
+    const known = new Set(state.attempts.map(a => a.attempt_id));
+    return [...state.attempts, ...state.sessionHistory.filter(a => !known.has(a.attempt_id))];
+  }
+  function recordByGrade(grade) { return records().filter(a => a.grade === Number(grade)).sort((a,b)=>new Date(a.completed_at)-new Date(b.completed_at)); }
+  function completedIds(grade) { return new Set(recordByGrade(grade).map(a => a.text_id)); }
+  function escapeHtml(value) { return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char])); }
+  function fmtTime(sec) { const n = Math.max(1, Math.round(sec)); const m = Math.floor(n/60), s = n%60; return m ? `${m} мин ${s} сек` : `${s} сек`; }
+  function wpmFor(t, sec) { return Math.round(t.word_count * 60 / Math.max(sec, 0.01)); }
+  function announce(text) { pageStatus.textContent = text; }
+  function fmtDate(iso) { try { return new Intl.DateTimeFormat('ru-RU', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }).format(new Date(iso)); } catch { return 'Недавно'; } }
+  function navState() {
+    document.body.classList.toggle('is-reading', state.view === 'reader');
+    document.querySelectorAll('[data-nav]').forEach(el => {
+      const section = state.view === 'home' || state.view === 'stories' ? 'home' : state.view === 'progress' ? 'progress' : state.view === 'parents' ? 'parents' : '';
+      el.classList.toggle('active', el.dataset.nav === section);
+      if (el.dataset.nav === section) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current');
+    });
+    document.documentElement.style.setProperty('--font-reading', `${state.fontSize}px`);
+  }
+  function render(toTop = true) {
+    navState();
+    const screens = { home: screenHome, stories: screenStories, reader: screenReader, quiz: screenQuiz, result: screenResult, progress: screenProgress, parents: screenParents };
+    app.innerHTML = (screens[state.view] || screenHome)();
+    if (toTop) { window.scrollTo(0, 0); announce(({home:'Главная',stories:'Выбор истории',reader:'Чтение истории',quiz:'Вопросы по истории',result:'Результаты чтения',progress:'Мой прогресс',parents:'Информация для взрослых'})[state.view]); }
+  }
+  function screenHome() {
+    return `<section class="hero"><div class="hero-copy">
+        <span class="eyebrow"><span class="twinkle">✳</span> ДОБРО ПОЖАЛОВАТЬ В КЛУБ ЧИТАТЕЛЕЙ</span>
+        <h1>Каждая история — <em>новое открытие.</em></h1>
+        <p>Выбирай класс, читай вслух и отвечай на вопросы. Секунды мы посчитаем сами — тебе можно просто наслаждаться историей!</p>
+        <div class="hero-pills"><span class="hero-pill">📚 15 интересных историй</span><span class="hero-pill">⏱ Без видимого таймера</span><span class="hero-pill">💜 В своём темпе</span></div>
+      </div><div class="hero-art" aria-hidden="true"><span class="art-blob"></span><span class="art-star s1">✦</span><span class="art-star s2">✳</span><span class="art-star s3">✦</span><div class="art-book"><div class="art-page-left"></div><div class="art-page-right"></div><div class="art-face"><span>•</span><span>•</span></div><div class="art-blush"></div></div><div class="art-cloud"></div></div></section>
+      <section aria-labelledby="grade-prompt"><div class="section-heading"><div><h2 id="grade-prompt">В каком ты классе?</h2><p>Выбери свою ступеньку и отправляйся навстречу приключениям.</p></div><span class="soft-note"><span class="dot"></span> Без отметок и соревнований</span></div>
+      <div class="grade-grid">${[2,3,4].map(g => `<button type="button" class="grade-card grade-${g}" data-action="choose-grade" data-grade="${g}">
+        <div class="grade-shape" aria-hidden="true"></div><div class="grade-card-header"><span class="grade-icon" aria-hidden="true">${metadata[g].emoji}</span><span class="grade-card-title">${g} класс</span></div>
+        <p>${metadata[g].caption}</p><span class="arrow" aria-hidden="true">→</span></button>`).join('')}</div>
+      <div class="bottom-tip"><div class="tip-icon" aria-hidden="true">💡</div><div><strong>Маленький секрет большого читателя</strong><p>Не нужно читать быстрее всех. Главное — понимать, о чём рассказывает история. И получать удовольствие!</p></div></div>`;
+  }
+  function screenStories() {
+    const texts = DATA.filter(t => t.grade === state.grade);
+    const done = completedIds(state.grade);
+    return `<button class="back-button" type="button" data-action="home">← Все классы</button>
+      <div class="page-header"><div><span class="eyebrow">КНИЖНАЯ ПОЛКА</span><h1 class="page-title">Выбирай историю ✨</h1></div><span class="pill-class">${state.grade} класс</span></div>
+      <p class="page-lead">У тебя есть пять историй. Начни с любой — дальше будет три интересных вопроса!</p>
+      <div class="story-grid">${texts.map((t, i) => `<button type="button" class="story-card" data-action="pick-story" data-id="${t.id}">
+        <div class="story-head"><span class="story-symbol" aria-hidden="true">${topicEmojis[t.topic]||'📖'}</span><span class="story-index">${String(i+1).padStart(2,'0')} / 05</span></div>
+        <div class="story-title">${escapeHtml(t.title)}</div><div class="story-meta">${escapeHtml(t.topic)} <span>·</span> ${t.word_count} слов</div>
+        <div class="story-foot"><span>Читать историю →</span>${done.has(t.id) ? `<span class="read-mark">✓ Уже читали</span>` : ''}</div></button>`).join('')}</div>
+      <div class="secondary-row"><button class="btn btn-outline" type="button" data-action="random-story">🎲 Выбрать непрочитанную историю</button></div>`;
+  }
+  function screenReader() {
+    const t = activeStory(); if (!t) { state.view='stories'; return screenStories(); }
+    const running = state.running;
+    return `<div class="reader-shell"><div class="reader-top">
+        ${running ? '<span class="reader-top-note">📖 Читай в своём темпе</span><span class="reader-top-note">✦ Читай-ка</span>' : `<button type="button" class="reader-quit" data-action="back-to-stories">← К историям</button><span class="reader-top-note">${t.grade} класс · ${t.word_count} слов</span>`}
+        </div><section class="reader-card" aria-labelledby="read-title"><div class="reader-eyebrow">ВРЕМЯ ДЛЯ ИСТОРИИ ✦</div><h1 id="read-title">${escapeHtml(t.title)}</h1>
+        <p class="story-text" id="story-text">${escapeHtml(t.text)}</p><div class="reader-divider"></div>
+        ${!running ? `<div class="reader-control"><button class="btn btn-primary btn-xl" type="button" data-action="start">▶ Начать чтение</button>
+             <div class="font-controls" aria-label="Размер шрифта"><span>Шрифт:</span><button type="button" data-action="font-minus" aria-label="Уменьшить шрифт" ${state.fontSize<=20?'disabled':''}>А−</button><button type="button" data-action="font-plus" aria-label="Увеличить шрифт" ${state.fontSize>=32?'disabled':''}>А+</button></div></div>
+             <p class="reader-help">Когда будешь готов(а), нажми кнопку и читай вслух. Время начнётся только после нажатия.</p>`
+          : `<div class="reader-control"><div class="reader-status" role="status"><span class="breathing-dot" aria-hidden="true"></span> Идёт чтение. Таймер спрятан.</div><button class="btn btn-primary btn-xl" type="button" data-action="finish">✓ Закончил(а)</button></div>
+              ${state.flash ? `<p class="reader-error" role="status">${escapeHtml(state.flash)}</p>` : ''}
+              <p class="reader-note">Когда дочитаешь до последнего слова, нажми «Закончил(а)».</p>`}
+        </section></div>`;
+  }
+  function screenQuiz() {
+    const t = activeStory(); if (!t) return '';
+    const chosen = state.answers.filter(a => a !== null).length;
+    return `<section class="center-shell"><div class="center-intro"><div class="celebrate-icon" aria-hidden="true">🧠</div>
+      <span class="eyebrow">ИСТОРИЯ ПРОЧИТАНА!</span><h1>А теперь три вопроса</h1><p>Вспомни, что происходило в истории «${escapeHtml(t.title)}», и выбери подходящие ответы.</p></div>
+      <div class="questions-list">${t.questions.map((q,i) => `<section class="question-card" aria-labelledby="q-${i}"><div class="question-topline">Вопрос ${i+1} из 3</div><h2 id="q-${i}">${escapeHtml(q.question)}</h2><div class="option-list" role="group" aria-labelledby="q-${i}">
+        ${q.options.map((choice,k) => `<button type="button" class="answer-option ${state.answers[i]===k?'is-selected':''}" data-action="select-answer" data-q="${i}" data-a="${k}" aria-pressed="${state.answers[i]===k}"><span class="option-circle" aria-hidden="true">${'АБВ'[k]}</span><span>${escapeHtml(choice)}</span></button>`).join('')}</div></section>`).join('')}</div>
+      <div class="quiz-action"><button class="btn btn-primary btn-xl" type="button" data-action="submit-quiz" id="submit-quiz" ${chosen!==3?'disabled':''}>Узнать результат →</button><p class="quiz-counter" id="quiz-counter">Отвечено: ${chosen} из 3</p></div></section>`;
+  }
+  function resultMessage(score) {
+    if(score === 3) return 'Ты разобрался(лась) во всех трёх вопросах. Здорово, что ты читаешь внимательно!';
+    if(score === 2) return 'Ты запомнил(а) много важного! Можно перечитать историю и заметить ещё больше деталей.';
+    return 'Каждая история учит замечать новое. Попробуй перечитать её не спеша и снова ответить на вопросы.';
+  }
+  function screenResult() {
+    const t = activeStory(), a = state.justFinished;
+    if (!t || !a) { state.view='home'; return screenHome(); }
+    return `<section class="center-shell"><div class="result-header"><div class="celebrate-icon" aria-hidden="true">🌟</div>
+       <span class="eyebrow">ЕЩЁ ОДНА ПРОЧИТАННАЯ ИСТОРИЯ</span><h1>Ты молодец, читатель!</h1><p>${resultMessage(a.correct_answers)}</p></div>
+      <div class="stat-grid"><div class="stat-box"><div class="stat-icon" aria-hidden="true">📖</div><div class="stat-num">${t.word_count}</div><div class="stat-label">слов прочитано</div></div>
+        <div class="stat-box"><div class="stat-icon" aria-hidden="true">⏱</div><div class="stat-num" style="font-size:clamp(17px,3vw,26px)">${fmtTime(a.elapsed_seconds)}</div><div class="stat-label">время чтения</div></div>
+        <div class="stat-box"><div class="stat-icon" aria-hidden="true">💡</div><div class="stat-num">${a.correct_answers} / 3</div><div class="stat-label">ответов верно</div></div></div>
+      <div class="insight-note"><strong>🌿 Примерная скорость по времени: ${a.wpm_approx} слов/мин.</strong> Это расчёт по длине текста и времени. Он не показывает пропущенные или ошибочно прочитанные слова. Важнее читать осмысленно.${a.repeated_text ? ' Это повторное чтение знакомого текста: его может быть легче читать.' : ''}
+        ${state.storageProblem ? '<strong> Сохранить на устройстве не получилось. Результат доступен только сейчас.</strong>' : !state.saveEnabled ? ' Сохранение отключено — эта попытка доступна только до закрытия страницы.' : ''}</div>
+      <button type="button" class="review-toggle" data-action="toggle-review" aria-expanded="${state.revealReview}">${state.revealReview ? 'Скрыть ответы ↑' : 'Посмотреть свои ответы ↓'}</button>
+      ${state.revealReview ? `<div class="review-list">${t.questions.map((q,i)=>{const ok= a.answers[i]===q.correct_index;return `<div class="review-item"><strong>${i+1}. ${escapeHtml(q.question)}</strong><span class="review-answer">${ok?'✓':'★'} Верный ответ: ${escapeHtml(q.options[q.correct_index])}</span>${ok?'':`<div class="review-your">Ты выбрал(а): ${escapeHtml(q.options[a.answers[i]])}</div>`}</div>`;}).join('')}</div>` : ''}
+      <div class="result-actions"><button type="button" class="btn btn-primary" data-action="other-story">📚 Другую историю</button><button type="button" class="btn btn-outline" data-action="again">↻ Прочитать ещё раз</button><button type="button" class="btn btn-quiet" data-action="home">К выбору класса</button></div></section>`;
+  }
+  function screenProgress() {
+    const g = state.progressGrade;
+    const history = recordByGrade(g);
+    const unique = new Set(history.map(a => a.text_id));
+    const scoreSum = history.reduce((n,a)=>n+a.correct_answers,0);
+    const recent = history.slice(-8);
+    const max = Math.max(1,...recent.map(a=>a.wpm_approx));
+    const titles = DATA.filter(t => t.grade === g);
+    return `<div class="page-header"><div><span class="eyebrow">МОЙ КНИЖНЫЙ МИР</span><h1 class="page-title">Мои открытия 📚</h1></div><span class="pill-class">Только мои результаты</span></div>
+      <p class="page-lead">Здесь живут прочитанные истории. Можно следить за своим путешествием без отметок и сравнений с другими.</p>
+      <div class="filter-row" role="group" aria-label="Выберите класс для истории">${[2,3,4].map(n=>`<button class="filter-btn ${g===n?'active':''}" type="button" data-action="progress-grade" data-grade="${n}" aria-pressed="${g===n}">${n} класс</button>`).join('')}</div>
+      ${history.length ? `<div class="progress-kpis"><div class="progress-kpi"><span class="kpi-emoji">📘</span><strong>${unique.size} / 5</strong><small>разных историй</small></div><div class="progress-kpi"><span class="kpi-emoji">🌱</span><strong>${history.length}</strong><small>завершённых чтений</small></div><div class="progress-kpi"><span class="kpi-emoji">💡</span><strong>${scoreSum} / ${history.length*3}</strong><small>ответов верно всего</small></div></div>
+      <section class="panel"><h2>Моя книжная полка</h2><p>Каждая цветная книжка — история, которую ты уже прочитал(а).</p><div class="shelf" aria-label="Прочитано ${unique.size} из 5 историй">${titles.map((t,i)=>`<div class="book-spine ${unique.has(t.id)?'read':'unread'}" title="${escapeHtml(t.title)}" style="--tilt:${[-4,3,-2,4,-3][i]}deg;--bookcolor:${['#d78c9f','#63aca2','#8a77c9','#e5af70','#779ad3'][i]}">${unique.has(t.id)?'★':'·'}</div>`).join('')}</div></section>
+      <section class="panel"><h2>История моих тренировок</h2><p>Примерная скорость по времени на последних ${recent.length} чтениях. Тексты отличаются, поэтому цифры не равны проверке техники чтения.</p>
+        <div class="mini-bars" role="img" aria-label="Примерная скорость последних чтений: ${recent.map(a=>a.wpm_approx).join(', ')} слов в минуту">${recent.map((a,i)=>`<div class="bar-wrap"><div class="bar ${a.repeated_text?'repeated':''}" style="height:${Math.max(8,Math.round(a.wpm_approx/max*94))}px"><span class="bar-value">${a.wpm_approx}</span></div><span class="bar-label">№ ${Math.max(1,history.length-recent.length+1)+i}</span></div>`).join('')}</div>
+        <p class="microcopy">Серые столбики — повторное чтение знакомого текста. Результаты разных историй сравнивай осторожно.</p>
+      </section><section class="panel"><h2>Последние занятия</h2><div class="history-list">${history.slice().reverse().slice(0,20).map(a=>{const t=DATA.find(t=>t.id===a.text_id);return `<div class="history-item"><div><div class="history-item-title">${escapeHtml(t.title)}</div><div class="history-item-meta">${fmtDate(a.completed_at)}${a.repeated_text?' · повторное чтение':''}</div></div><div class="history-item-result">${a.correct_answers} из 3 ответов<br>${a.wpm_approx} слов/мин*</div></div>`;}).join('')}</div><p class="microcopy">* Примерная скорость по времени, а не школьная оценка.</p></section>`
+      : `<section class="panel empty-state"><div class="empty-icon" aria-hidden="true">📖</div><h2>Полка пока ждёт историй</h2><p>Прочитай первую историю в ${g} классе и ответь на вопросы. После этого здесь появится твой результат.</p><button class="btn btn-primary" type="button" data-action="progress-start" data-grade="${g}">Выбрать историю →</button></section>`}
+      <div class="bottom-tip"><span class="tip-icon">🔒</span><div><strong>Это только твоя история</strong><p>Результаты сохраняются в этом браузере, когда сохранение включено. При очистке данных браузера они могут исчезнуть. Настройки — в разделе «Для взрослых».</p></div></div>`;
+  }
+  function screenParents() {
+    return `<div><span class="eyebrow">РОДИТЕЛЯМ И ПЕДАГОГАМ</span><h1 class="page-title">Как работает «Читай-ка»?</h1><p class="page-lead">Короткий спокойный ритуал чтения вслух: один текст, три вопроса и доброжелательная обратная связь.</p></div>
+      <div class="parent-grid"><section class="parent-card"><div class="parent-icon">⏱️</div><h2>Секундомер скрыт</h2><p>Отсчёт начинается только после кнопки «Начать чтение» и заканчивается только после «Закончил(а)». Ребёнок не видит бегущих секунд.</p></section>
+      <section class="parent-card"><div class="parent-icon">💡</div><h2>Понимание важнее скорости</h2><p>После чтения ребёнок отвечает на три вопроса. Расчёт слов в минуту приблизителен: без распознавания речи нельзя узнать о пропусках и ошибках.</p></section>
+      <section class="parent-card"><div class="parent-icon">📚</div><h2>Тексты из проектного банка</h2><p>Пять авторских историй на каждый класс: 2-й, 3-й и 4-й. Длины и вопросы взяты из подготовленной методической базы, но не заменяют педагогическую диагностику.</p></section>
+      <section class="parent-card"><div class="parent-icon">🌿</div><h2>В своём темпе</h2><p>Одна тренировка — один текст и три вопроса. Без отметок, рекордов и сравнения детей. Если ребёнок не понял текст, лучше спокойно перечитать.</p></section></div>
+      <section class="panel settings-section"><h2>Настройки и приватность</h2><p>Никаких аккаунтов, рекламы, микрофона, облака или отправки данных. На устройстве хранится только история попыток, без имени ребёнка.</p>
+      <div class="subtle-separator"></div><div class="toggle-row"><div><strong>Сохранять историю на этом устройстве</strong><p>${state.saveEnabled ? 'Включено: новые результаты останутся в этом браузере.' : 'Выключено: новые результаты будут видны только до закрытия страницы.'}</p></div>
+      <label class="switch"><input type="checkbox" id="save-toggle" aria-label="Сохранять историю в браузере" ${state.saveEnabled?'checked':''}><span class="switch-shape"></span></label></div>
+      <div class="settings-buttons"><button class="btn btn-danger" type="button" data-action="clear-history">Удалить историю чтения</button><span class="microcopy">Отключение сохранения не удаляет старую историю.<br>При очистке браузера данные могут потеряться.</span></div></section>
+      <section class="panel"><h2>На что обратить внимание</h2><p>Слова в минуту = количество слов × 60 / время в секундах. Измерение зависит от того, когда ребёнок нажал кнопки. На некоторых устройствах продолжительный сон компьютера может влиять на работу браузерного таймера. Федеральные возрастные ориентиры к концу года не используются здесь как проверка «сдал / не сдал».</p><p class="microcopy">Перед массовым использованием авторский банк рекомендуется дополнительно проверить с педагогом начальных классов.</p></section>`;
+  }
+  function go(view) {
+    if (state.view === 'reader' && state.running && view !== 'quiz') {
+      if (!window.confirm('Чтение ещё идёт. Если выйти, эта попытка не сохранится. Выйти?')) return;
+    }
+    state.view = view;
+    state.running = false; state.startedAt = null; state.flash = '';
+    render();
+  }
+  function chooseStory(id) {
+    if (!DATA.some(t=>t.id === id)) return;
+    state.textId = id; state.running=false; state.startedAt=null; state.elapsedSeconds=null;
+    state.answers=[null,null,null]; state.flash='';state.revealReview=false;state.justFinished=null;
+    state.view='reader';render();
+  }
+  function randomUnseen() {
+    const inGrade = DATA.filter(t=>t.grade===state.grade);
+    const completed = completedIds(state.grade);
+    const unseen = inGrade.filter(t=>!completed.has(t.id));
+    const choices = unseen.length ? unseen : inGrade;
+    if (choices.length) chooseStory(choices[Math.floor(Math.random()*choices.length)].id);
+  }
+  function submitQuiz() {
+    if (state.answers.some(a=>a === null)) return;
+    const t=activeStory(); if(!t || !Number.isFinite(state.elapsedSeconds) || state.elapsedSeconds<=0) return;
+    const prior = records().some(a => a.text_id===t.id);
+    const attempt = {
+      attempt_id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `attempt-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      text_id:t.id, grade:t.grade, elapsed_seconds:Math.round(state.elapsedSeconds*1000)/1000,
+      wpm_approx:wpmFor(t,state.elapsedSeconds),correct_answers:t.questions.reduce((n,q,i)=>n+(q.correct_index===state.answers[i]?1:0),0),
+      total_questions:3, completed_at:new Date().toISOString(), repeated_text:prior, answers:[...state.answers]
+    };
+    state.sessionHistory.push(attempt);
+    if(state.saveEnabled) {
+      state.attempts.push(attempt); if (state.attempts.length>300) state.attempts=state.attempts.slice(-300);
+      safeSave(HISTORY_KEY,state.attempts);
+    }
+    state.justFinished=attempt; state.revealReview=false;state.view='result';render();
+  }
+  function clearHistory() {
+    if (!window.confirm('Удалить всю сохранённую историю чтения на этом устройстве? Отменить это действие не получится.')) return;
+    state.attempts=[]; state.sessionHistory=[]; state.justFinished=null;
+    try { localStorage.removeItem(HISTORY_KEY); } catch { state.storageProblem=true; }
+    render(false);announce('История удалена.');
+  }
+  document.addEventListener('click',(e) => {
+    const btn = e.target.closest('[data-action]'); if (!btn || !btn.matches('button')) return;
+    const action=btn.dataset.action;
+    switch(action) {
+      case 'home': go('home');break;
+      case 'parents':go('parents');break;
+      case 'progress':state.progressGrade=state.grade;go('progress');break;
+      case 'choose-grade':state.grade=Number(btn.dataset.grade);go('stories');break;
+      case 'back-to-stories': go('stories');break;
+      case 'pick-story': chooseStory(btn.dataset.id);break;
+      case 'random-story':randomUnseen();break;
+      case 'start':
+        if(state.view!=='reader'||state.running) break;
+        state.startedAt=performance.now();state.running=true;state.flash='';render();announce('Чтение началось. Таймер скрыт.');break;
+      case 'finish':
+        if(state.view!=='reader'||!state.running) break;
+        {
+          const seconds=(performance.now()-state.startedAt)/1000;
+          if(seconds<5) {state.flash='Похоже, кнопка нажата слишком рано. Продолжай читать и нажми её, когда закончишь.';render(false);break;}
+          state.elapsedSeconds=seconds;state.running=false;state.startedAt=null;state.flash='';state.view='quiz';render();
+        }break;
+      case 'font-minus':state.fontSize=Math.max(20,state.fontSize-2);saveOptions();render(false);break;
+      case 'font-plus':state.fontSize=Math.min(32,state.fontSize+2);saveOptions();render(false);break;
+      case 'select-answer':
+        if(state.view!=='quiz') break;
+        {const q=Number(btn.dataset.q),a=Number(btn.dataset.a);if(q<0||q>2||a<0||a>2)break;
+        state.answers[q]=a;
+        document.querySelectorAll(`[data-action="select-answer"][data-q="${q}"]`).forEach(b=>{const chosen=Number(b.dataset.a)===a;b.classList.toggle('is-selected',chosen);b.setAttribute('aria-pressed',String(chosen));});
+        const count=state.answers.filter(v=>v!==null).length;document.getElementById('submit-quiz').disabled=count!==3;
+        document.getElementById('quiz-counter').textContent=`Отвечено: ${count} из 3`;}
+        break;
+      case 'submit-quiz':submitQuiz();break;
+      case 'toggle-review':state.revealReview=!state.revealReview;render(false);break;
+      case 'again':chooseStory(state.textId);break;
+      case 'other-story':go('stories');break;
+      case 'progress-grade':state.progressGrade=Number(btn.dataset.grade);render(false);break;
+      case 'progress-start':state.grade=Number(btn.dataset.grade);go('stories');break;
+      case 'clear-history':clearHistory();break;
+      default:break;
+    }
+  });
+  document.addEventListener('change',(e)=>{
+    if(e.target.id!=='save-toggle')return;
+    state.saveEnabled=Boolean(e.target.checked);
+    if(state.saveEnabled) {
+      const seen=new Set(state.attempts.map(a=>a.attempt_id));
+      for (const a of state.sessionHistory) { if(!seen.has(a.attempt_id))state.attempts.push(a); }
+      state.attempts=state.attempts.slice(-300);
+      safeSave(HISTORY_KEY,state.attempts);
+    }
+    saveOptions();render(false);
+  });
+  // При перезагрузке активный таймер исчезнет, незаконченная попытка не записывается.
+  if (DATA.length!==15 || [2,3,4].some(g=>DATA.filter(t=>t.grade===g).length!==5 || DATA.filter(t=>t.grade===g).some(t=>t.questions.length!==3))) {
+    app.innerHTML='<div class="panel"><h1>Не удалось загрузить истории</h1><p>Проверьте, что рядом с index.html находится файл data.js.</p></div>';
+  } else { render(); }
+})();
+
+</script>
+</body>
+</html>
