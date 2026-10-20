@@ -6,6 +6,12 @@
   <meta name="theme-color" content="#f6f7fc">
   <meta name="description" content="Читай-ка — спокойный тренажёр чтения вслух для 2, 3 и 4 классов. Без видимого секундомера, с вопросами и личным прогрессом.">
   <title>Читай-ка — тренажёр чтения для 2–4 классов</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Читай-ка">
   <style>
 :root{--ink:#253049;--muted:#78839b;--line:#e7e9f2;--violet:#7157c9;--violet-dark:#5a42b1;--blue:#4b73dd;--teal:#0e8f86;--coral:#f27777;--pink:#feeaf0;--paper:#fff;--bg:#f7f8fd;--shadow:0 16px 44px rgba(40,43,90,.07);--r:25px;--font-reading:25px;color-scheme:light}
 *{box-sizing:border-box}
@@ -39,7 +45,6 @@ body.is-reading{background:#f4f2fe}.is-reading .site-header,.is-reading .site-fo
   .nav-link-parent.active{background:#f1effc;color:var(--violet-dark)}
 }
 
-
 /* Класс заметен сразу на карточке, в том числе на планшете и телефоне. */
 .grade-card{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:16px}
 .grade-card-header{position:relative;z-index:1;display:flex;align-items:center;gap:17px;flex-wrap:nowrap;width:100%}
@@ -50,6 +55,21 @@ body.is-reading{background:#f4f2fe}.is-reading .site-header,.is-reading .site-fo
 .grade-card.grade-4 .grade-card-title{color:#6344af}
 @media(max-width:800px){.grade-card{padding:20px 16px;gap:18px}.grade-card-header{gap:10px}.grade-card-title{font-size:24px}.grade-card .grade-icon{width:52px;height:52px;font-size:28px}}
 @media(max-width:650px){.grade-card{display:flex;flex-direction:column;align-items:stretch;justify-content:center;min-height:125px;gap:9px;padding:17px 20px}.grade-card-header{gap:16px}.grade-card-title{font-size:26px}.grade-card .grade-icon{width:55px;height:55px}.grade-card p{margin:0 0 0 71px;padding-right:35px;line-height:1.3;font-size:12px}}
+
+/* PWA: спокойный блок установки, скрытый во время чтения */
+[hidden]{display:none!important}
+.offline-card{margin-top:22px;background:#eaf8f4;border:1px solid #cfece5;border-radius:23px;padding:23px 27px;display:flex;align-items:center;gap:18px}
+.offline-card-icon{font-size:31px;width:61px;height:61px;border-radius:20px;display:grid;place-items:center;background:#fff;flex-shrink:0}
+.offline-card-copy{flex:1;min-width:0}
+.offline-card h2{margin:0 0 5px;font-size:18px;letter-spacing:-.3px}
+.offline-card p{margin:0;color:#477a73;font-size:13px;line-height:1.6}
+.offline-info-link{background:none;border:0;color:#176f64;padding:9px 0 0;text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:700;text-align:left}
+.offline-install{white-space:nowrap;flex-shrink:0}
+.offline-instructions{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:16px 0 18px}
+.offline-instructions>div{background:#f7f8fc;border-radius:14px;padding:17px}
+.offline-instructions strong{font-size:14px}
+.offline-instructions p{margin:8px 0 0;font-size:13px;line-height:1.7}
+@media(max-width:650px){.offline-card{align-items:flex-start;flex-wrap:wrap;padding:19px;gap:12px}.offline-card-icon{width:46px;height:46px;font-size:25px;border-radius:14px}.offline-card-copy{flex-basis:calc(100% - 60px)}.offline-install{width:100%}.offline-instructions{grid-template-columns:1fr}}
 
 </style>
   <script>
@@ -632,7 +652,7 @@ window.READING_TEXTS = [
     </header>
     <main id="app" class="main-content" tabindex="-1"></main>
     <footer class="site-footer" id="site-footer">
-      <div class="footer-inner"><span>С любовью к историям <span aria-hidden="true">✦</span> и без гонки за секундами</span><span>2, 3 и 4 классы · Всё работает без интернета</span></div>
+      <div class="footer-inner"><span>С любовью к историям <span aria-hidden="true">✦</span> и без гонки за секундами</span><span>2, 3 и 4 классы · После установки работает без интернета</span></div>
     </footer>
   </div>
   <div id="screen-reader-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
@@ -706,6 +726,7 @@ window.READING_TEXTS = [
     navState();
     const screens = { home: screenHome, stories: screenStories, reader: screenReader, quiz: screenQuiz, result: screenResult, progress: screenProgress, parents: screenParents };
     app.innerHTML = (screens[state.view] || screenHome)();
+    if (window.ChitaikaPWA) window.ChitaikaPWA.updateUI();
     if (toTop) { window.scrollTo(0, 0); announce(({home:'Главная',stories:'Выбор истории',reader:'Чтение истории',quiz:'Вопросы по истории',result:'Результаты чтения',progress:'Мой прогресс',parents:'Информация для взрослых'})[state.view]); }
   }
   function screenHome() {
@@ -719,7 +740,11 @@ window.READING_TEXTS = [
       <div class="grade-grid">${[2,3,4].map(g => `<button type="button" class="grade-card grade-${g}" data-action="choose-grade" data-grade="${g}">
         <div class="grade-shape" aria-hidden="true"></div><div class="grade-card-header"><span class="grade-icon" aria-hidden="true">${metadata[g].emoji}</span><span class="grade-card-title">${g} класс</span></div>
         <p>${metadata[g].caption}</p><span class="arrow" aria-hidden="true">→</span></button>`).join('')}</div>
-      <div class="bottom-tip"><div class="tip-icon" aria-hidden="true">💡</div><div><strong>Маленький секрет большого читателя</strong><p>Не нужно читать быстрее всех. Главное — понимать, о чём рассказывает история. И получать удовольствие!</p></div></div>`;
+      <div class="bottom-tip"><div class="tip-icon" aria-hidden="true">💡</div><div><strong>Маленький секрет большого читателя</strong><p>Не нужно читать быстрее всех. Главное — понимать, о чём рассказывает история. И получать удовольствие!</p></div></div>
+      <section class="offline-card" aria-labelledby="offline-title"><span class="offline-card-icon" aria-hidden="true">📱</span>
+      <div class="offline-card-copy"><h2 id="offline-title">Читай даже без интернета</h2><p data-pwa-status role="status">Открой сайт по ссылке с интернетом один раз, чтобы подготовить его для офлайн-чтения.</p>
+      <button class="offline-info-link" type="button" data-action="parents">Как добавить на экран планшета →</button></div>
+      <button class="btn btn-primary offline-install" type="button" data-pwa-install hidden>Установить</button></section>`;
   }
   function screenStories() {
     const texts = DATA.filter(t => t.grade === state.grade);
@@ -802,6 +827,12 @@ window.READING_TEXTS = [
       <section class="parent-card"><div class="parent-icon">💡</div><h2>Понимание важнее скорости</h2><p>После чтения ребёнок отвечает на три вопроса. Расчёт слов в минуту приблизителен: без распознавания речи нельзя узнать о пропусках и ошибках.</p></section>
       <section class="parent-card"><div class="parent-icon">📚</div><h2>Тексты из проектного банка</h2><p>Пять авторских историй на каждый класс: 2-й, 3-й и 4-й. Длины и вопросы взяты из подготовленной методической базы, но не заменяют педагогическую диагностику.</p></section>
       <section class="parent-card"><div class="parent-icon">🌿</div><h2>В своём темпе</h2><p>Одна тренировка — один текст и три вопроса. Без отметок, рекордов и сравнения детей. Если ребёнок не понял текст, лучше спокойно перечитать.</p></section></div>
+      <section class="panel settings-section"><h2>Офлайн-режим для планшета 📱</h2>
+      <p data-pwa-status role="status">Зайди на сайт с интернетом и дождись подготовки офлайн-версии.</p>
+      <div class="offline-instructions"><div><strong>На iPad (Safari)</strong><p>Открой сайт в Safari → нажми «Поделиться» → выбери «На экран Домой» → «Добавить». Затем запускай «Читай-ка» с нового значка.</p></div>
+      <div><strong>На Android (Chrome)</strong><p>Открой сайт → нажми «Установить» ниже, если появится, или выбери меню ⋮ → «Установить приложение» / «Добавить на главный экран».</p></div></div>
+      <button class="btn btn-primary offline-install" type="button" data-pwa-install hidden>Установить на это устройство</button>
+      <p class="microcopy">После первой успешной загрузки тексты и вопросы доступны без интернета. Устройство должно разрешать офлайн-хранение. Прогресс остаётся только на этом устройстве и может исчезнуть при удалении данных сайта или приложения.</p></section>
       <section class="panel settings-section"><h2>Настройки и приватность</h2><p>Никаких аккаунтов, рекламы, микрофона, облака или отправки данных. На устройстве хранится только история попыток, без имени ребёнка.</p>
       <div class="subtle-separator"></div><div class="toggle-row"><div><strong>Сохранять историю на этом устройстве</strong><p>${state.saveEnabled ? 'Включено: новые результаты останутся в этом браузере.' : 'Выключено: новые результаты будут видны только до закрытия страницы.'}</p></div>
       <label class="switch"><input type="checkbox" id="save-toggle" aria-label="Сохранять историю в браузере" ${state.saveEnabled?'checked':''}><span class="switch-shape"></span></label></div>
@@ -908,6 +939,61 @@ window.READING_TEXTS = [
   if (DATA.length!==15 || [2,3,4].some(g=>DATA.filter(t=>t.grade===g).length!==5 || DATA.filter(t=>t.grade===g).some(t=>t.questions.length!==3))) {
     app.innerHTML='<div class="panel"><h1>Не удалось загрузить истории</h1><p>Проверьте, что рядом с index.html находится файл data.js.</p></div>';
   } else { render(); }
+})();
+
+/* Читай-ка PWA: без внешних сервисов. GitHub Pages / HTTPS или localhost. */
+(() => {
+  'use strict';
+  let installPrompt = null;
+  let status = 'Для офлайн-чтения открой сайт с интернетом и дождись завершения подготовки.';
+  const secure = location.protocol === 'https:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  const supported = secure && 'serviceWorker' in navigator;
+  if(location.protocol === 'file:') {
+    status = 'Этот скачанный файл работает без интернета. Для установки на экран планшета нужен сайт по HTTPS, например на GitHub Pages.';
+  } else if(!supported) {
+    status = 'Этот браузер не разрешает офлайн-установку. Открой сайт через HTTPS в Safari или Chrome.';
+  }
+  function updateUI() {
+    document.querySelectorAll('[data-pwa-status]').forEach(el => { el.textContent = status; });
+    document.querySelectorAll('[data-pwa-install]').forEach(btn => { btn.hidden = !installPrompt; });
+  }
+  window.ChitaikaPWA = { updateUI };
+  document.addEventListener('click', async event => {
+    const btn = event.target.closest('[data-pwa-install]');
+    if(!btn || !installPrompt) return;
+    const prompt = installPrompt;
+    installPrompt = null;
+    updateUI();
+    try {
+      await prompt.prompt();
+      const choice = await prompt.userChoice;
+      if (choice && choice.outcome === 'accepted') status = 'Приложение добавляется на устройство. После установки открывай «Читай-ка» со значка.';
+    } catch { status = 'Можно установить через меню браузера «Добавить на главный экран».'; }
+    updateUI();
+  });
+  window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    installPrompt = event;
+    updateUI();
+  });
+  window.addEventListener('appinstalled', () => {
+    installPrompt = null;
+    status = '«Читай-ка» установлена! Можно открывать с главного экрана, даже без интернета.';
+    updateUI();
+  });
+  updateUI();
+  if(!supported) return;
+  window.addEventListener('load', async () => {
+    try {
+      await navigator.serviceWorker.register('./sw.js', { scope: './' });
+      await navigator.serviceWorker.ready; // SW активируется только после полной предзагрузки файлов
+      status = '✅ Всё готово! Истории и вопросы доступны без интернета на этом устройстве.';
+    } catch (error) {
+      console.warn('Offline setup unsuccessful', error);
+      status = navigator.serviceWorker.controller ? '✅ Офлайн-копия доступна. Можно продолжать чтение без интернета.' : 'Пока не получилось подготовить офлайн-режим. Проверь интернет и обнови страницу.';
+    }
+    updateUI();
+  });
 })();
 
 </script>
